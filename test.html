@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 test-id="resume-form-title">Конструктор резюме</h1>
+    <div test-id="resume-builder">
+      <form>
+        <section
+          style="
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            gap: 10px;
+            margin-bottom: 10px;
+          "
+        >
+          <label test-id="personal-info">ФИО</label>
+          <input type="text" id="name" placeholder="Введите своё ФИО:"/>
+          <label test-id="personal-info">День рождения</label>
+          <input type="text" name="data_birthday" placeholder="Введите свой день рождения:" />
+          <label test-id="personal-info">Город</label>
+          <input type="text" name="town" placeholder="Введите свой город:" />
+          <label test-id="personal-info">Номер телефона</label>
+          <input type="tel" name="phone_number" placeholder="123-456-7890"/>
+          <label test-id="personal-info">email</label>
+          <input type="email" name="email" placeholder="Введите свой email:"/>
+          <label test-id="personal-info">Интересы</label>
+
+          <div
+            id="interesting_block"
+            style="
+              display: flex;
+              flex-direction: column;
+              width: 200px;
+              gap: 10px;
+            "
+          >
+          </div>
+
+          <button id="addInteresting">Добавить поле для ввода интересов</button>
+          <button id="deleteInteresting">Удалить поле для ввода интересов</button>
+          <!--  -->
+          <label test-id="personal-info">Языки</label>
+          <div
+            id="language_block"
+            style="
+              display: flex;
+              flex-direction: column;
+              width: 400px;
+              gap: 10px;
+            "
+          >
+          </div>
+          <button id="addLanguage">Добавить поле для ввода языков</button>
+          <button id="deleteLanguage">Удалить поле для ввода языков</button>
+          <label test-id="personal-info">Описание</label>
+          <textarea type="text" name="description" placeholder="Описание" style="resize: vertical; width: 400px"></textarea>
+          <label test-id="personal-info">Опыт работы</label>
+          <div
+            id="work_block"
+            style="
+              display: flex;
+              flex-direction: column;
+              width: 400px;
+              gap: 10px;
+            "
+          >
+          </div>
+          <button id="addWork">Добавить поле для ввода опыта работы</button>
+          <button id="deleteWork">Удалить поле для ввода опыта работы</button>
+          
+        </section>
+        <div id="save__button">
+          <input class="end" style="margin-top: 10px;" type="submit" value="Сохранить" />
+        </div>
+        <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 -->
+        <script>
+          var interstingArray = [];
+          const blockInteresting = document.getElementById("interesting_block");
+          const t2 = document.getElementById("interesting_block");
+          const addNew = document.getElementById("addInteresting");
+          const deleteNew = document.getElementById("deleteInteresting");
+
+          let counter = 0;
+          const add_interests = (evt) => {
+            evt.preventDefault();
+            var input = document.createElement("textarea");
+
+            input.type = "text";
+            input.className = "one";
+            input.placeholder = "Введите интерес:";
+            input.style = "resize: vertical; width: 400px";
+            blockInteresting.append(input);
+          };
+          const delete_interests = (evt) => {
+            evt.preventDefault();
+            let nodes = document.querySelectorAll(".one");
+            let i = nodes.length - 1;
+            nodes[i].parentNode.removeChild(nodes[i]);
+          };
+          //  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+          var languageArray = [];
+          const blockLanguage = document.getElementById("language_block");
+          const t22 = document.getElementById("language_block");
+          const addNew2 = document.getElementById("addLanguage");
+          const deleteNew2 = document.getElementById("deleteLanguage");
+
+          let counter2 = 0;
+          const add_language = (evt) => {
+            evt.preventDefault();
+            let div1 = document.createElement('div');
+            let input2 = document.createElement("input");
+            let input3 = document.createElement("input");
+            let textNode = document.createTextNode(' - ');
+            div1.className = "one2";
+            input2.type = "text";
+            input2.placeholder = "Введите язык:";
+            input2.style = "width: 45%";
+            input3.type = "text";
+            input3.placeholder = "Введите уровень владения:";
+            input3.style = "width: 45%";
+            div1.style = "margin-left: 1px; margin-right: 1px;";
+            div1.append(input2, textNode, input3);
+            blockLanguage.append(div1);
+          
+          };
+          const delete_language = (evt) => {
+            evt.preventDefault();
+            let nodes2 = document.querySelectorAll(".one2");
+            let i = nodes2.length - 1;
+            nodes2[i].parentNode.removeChild(nodes2[i]);
+            
+          };
+          // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          var workArray = [];
+          const blockWork = document.getElementById("work_block");
+          const t222 = document.getElementById("work_block");
+          const addWork = document.getElementById("addWork");
+          const deleteWork = document.getElementById("deleteWork");
+
+          let counter2work = 0;
+          const add_work = (evt) => {
+            evt.preventDefault();
+            let div1 = document.createElement('div');
+            let div2 = document.createElement('div');
+            let input2 = document.createElement("input");
+            let input3 = document.createElement("input");
+            let textNode = document.createTextNode(' - ');
+            let input4 = document.createElement("input");
+            let input5 = document.createElement("input");
+            let textarea1 = document.createElement("textarea");
+            div1.className = "one3";
+            input2.type = "text";
+            input2.placeholder = "Введите должность:";
+            input2.style = "width: 100%";
+            input3.type = "text";
+            input3.placeholder = "Введите дату начала работы:";
+            input3.style = "width: 45%";
+            input4.placeholder = "Введите дату конца работы:";
+            input4.style = "width: 45%";
+            input5.placeholder = "Введите название места работы:";
+            input5.style = "width: 100%";
+            textarea1.placeholder = "Введите детальную информацию о работе"
+            textarea1.style = "resize: vertical; width: 400px";
+            div2.append(input3, textNode, input4)
+            div1.style = "display: flex; flex-direction: column; width: 400px; gap: 10px;"
+            div1.append(input2, div2, input5, textarea1);
+            blockWork.append(div1);
+          };
+          const delete_work = (evt) => {
+            evt.preventDefault();
+            let nodes2 = document.querySelectorAll(".one3");
+            let i = nodes2.length - 1;
+            nodes2[i].parentNode.removeChild(nodes2[i]);
+            
+          };
+
+          addNew.addEventListener("click", add_interests);
+          deleteNew.addEventListener("click", delete_interests);
+          addNew2.addEventListener("click", add_language);
+          deleteNew2.addEventListener("click", delete_language);
+          addWork.addEventListener("click", add_work);
+          deleteWork.addEventListener("click", delete_work);
+        </script>
+      </form>
+    </div>
+  </body>
+</html>
